@@ -1,0 +1,13 @@
+.btn {
+    text-decoration: none;
+    font-size: 75%;
+    padding:7px 15px;
+    outline: none;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    &--pink{
+        background-color: $bg-color-pink;
+        color: #fff;
+    }
+}

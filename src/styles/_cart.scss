@@ -1,0 +1,127 @@
+// reset matrial dialog
+
+.mat-dialog-container {
+    padding: 0 !important; 
+    border-radius: 0 !important;
+    overflow:auto !important;
+}
+
+.shopping-cart {
+    height: 90vh;
+    font-size: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .header {
+        background-color: $color-primary;
+        padding:10px;
+        p {
+            color:#fff;
+            float:left;
+            margin: 0;
+            font-size: 110% ;
+            font-weight: 500;
+        }
+
+        span {
+            color:#fff;
+            float:right;
+            cursor: pointer;
+        }
+    }
+
+    .checkout {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        a {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            font-size: 90%;
+        }
+
+    }
+    .no-item {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h3 {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+    }
+
+    .cart-item {
+        height: 100%;
+        background-color: $bg-color-gray;
+        .item {
+            background-color: #fff;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            img {
+                width: 25%;
+            }
+            .info {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                padding-left: 10px;
+                .name {
+                    font-size: 110%;
+                    font-weight: bold;
+                    align-self: flex-start;
+                }
+                .count {
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    padding: 0 10px 0 0;
+                    margin-top: 10px;
+                    justify-content: space-between;
+
+                    mat-icon {
+                        height: 18px;
+                        width: 18px;
+                        font-size: 130%;
+                        background: $bg-color-pink;
+                        border-radius: 20px;
+                        color: white;
+                    }
+
+                    .price {
+                        font-size: 90%;
+                    }
+                    .total {
+                        font-size: 90%;
+                       font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        .auth{
+            padding: 5px;
+            margin:10px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: row;
+            img {
+                width: 30%;
+                margin-right: 5px;
+            }
+            span {
+                font-size: 80%;
+                align-self: center;
+            }
+        }
+    }
+}
+
+

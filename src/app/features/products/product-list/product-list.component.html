@@ -1,0 +1,31 @@
+<div class="main-box">
+    <div *ngFor="let product of products" class="product-card">
+        <div class="product-card--title">
+            <h4>{{product.name}}</h4>
+        </div>
+        <div class="small">
+            <img [src]="product.imageURL" [alt]="product.name">
+            <p class="description">{{product.description}}</p>
+        </div>
+        <div class="action">
+            <p class="product-card--price">MRP Rs. {{product.price}}</p>
+            <button (click)="addToCart(product)" class="btn btn--pink">Buy Now</button>
+        </div>
+        <button (click)="addToCart(product)" class="btn btn--pink tab">Buy Now @ MRP Rs. {{product.price}}</button>
+
+    </div>
+
+    <div *ngFor="let product of products" class="mobile-list">
+        <div class="product-card--title">
+            <h4>{{product.name}}</h4>
+        </div>
+        <div class="mob-container">
+            <img [src]="product.imageURL" [alt]="product.name">
+            <div class="desc">
+                <p class="description">{{product.description}}</p>
+                <button (click)="addToCart(product)" class="btn btn--pink tab">Buy Now @ MRP Rs.
+                    {{product.price}}</button>
+            </div>
+        </div>
+    </div>
+</div>

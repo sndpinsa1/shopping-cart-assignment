@@ -1,0 +1,67 @@
+
+
+
+
+/* Samll phones to small tablets: from 480px to 767px*/
+@media screen and (max-width:768px) {
+    .row {
+        width: 700px;
+    }
+    // product page media query
+    .product-card{
+        flex: 0 1 50%;
+
+        .small {
+            flex-direction: row;
+            flex: 0 1 50%
+        }
+
+        img {
+            width: 100%;
+            height: fit-content;
+        }
+
+        .tab {
+            display: block;
+        }
+
+        .action {
+            display: none;
+        }
+    }
+
+    //home page
+    .p-cat-home {
+        .img-cont{
+            img{
+                width: 100%;
+                height: fit-content;
+            }
+        }
+    }
+}
+
+
+/* Samll phones to small tablets: from 0 to 480px*/
+@media screen and (max-width:480px) {
+    .row {
+        width: 100%;
+    }
+    // product page media query
+   .product-card{
+       display: none;
+   }
+   .mobile-list{
+       display: block;
+   }
+
+    //home
+    //home page
+    .p-cat-home {
+        .img-cont{
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

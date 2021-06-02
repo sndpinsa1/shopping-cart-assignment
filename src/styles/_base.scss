@@ -1,5 +1,30 @@
+// all color
+$bg-color-pink : #bf2957;
+$bg-color-gray: #eeeeee;
+$bg-color-lightblue: #79d7e1;
+
+$color-txt-gray: #454545;
+$color-primary: #040404;
+
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #fff;
+    color:$color-primary;
+    font-family: sans-serif;
+    font-size:14px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+.row {
+    width: 960px;
+    margin: 0 auto;
 }
