@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="slide-show">
+        <carousel [images]="images" [objectFit]="'cover'" [cellWidth]="'100%'" [arrowsOutside]="false" [autoplay]="true"
+            [dots]="true" [loop]="true">
+        </carousel>
+    </div>
+    <ng-container *ngFor="let cat of categories; let odd = odd">
+        <div *ngIf="cat.enabled" class="p-cat-home" [ngStyle]="{'flex-direction':odd ? 'row-reverse':'row'}">
+            <div class="img-cont" [ngStyle]="{'justify-content':odd ? 'flex-end':'flex-start'}">
+                <img [src]="cat.imageUrl" alt="">
+            </div>
+            <div class="cat-details">
+                <h2>{{cat.name}}</h2>
+                <p>{{cat.description}}</p>
+                <a [routerLink]="['/products', cat.id]" class="btn btn--pink">Explore {{cat.key}}</a>
+            </div>
+        </div>
+    </ng-container>
+
+</div>

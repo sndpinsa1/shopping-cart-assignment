@@ -1,0 +1,49 @@
+<div class="shopping-cart">
+    <div class="header">
+        <p>My cart &nbsp;
+            <span class='item-count'>({{cartItem.length}} item)</span></p>
+        <span *ngIf="isDesktop">
+            <mat-icon color="white" (click)="onClose()" aria-hidden="false" aria-label="Example home icon">close</mat-icon>
+        </span>
+    </div>
+    <div class="no-item" *ngIf="this.cartItem.length < 1; else cart">
+        <h3>No Item in your cart</h3>
+        <p>Your favurite item are just a click away.</p>
+    </div>
+
+    <ng-template #cart>
+        <div class="cart-item" >
+            <div *ngFor="let cart of cartItem; let i = index" class="item">
+                <img [src]="cart.product.imageURL" [alt]="cart.product.name">
+                <div class="info">
+                    <div class="name">
+                        {{cart.product.name}}
+                    </div>
+                    <div class="count">
+                        <mat-icon (click)="add(i)">add</mat-icon>
+                        <div class="qty">{{cart.qty}}</div>
+                        <mat-icon (click)="remove(i)">remove</mat-icon>
+                        <p>X</p>
+                        <div class="price">Rs. {{cart.product.price}}</div>
+                        <div class="total">Rs. {{cart.qty * cart.product.price}}</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="auth">
+                <img src="/assets/static/images/lowest-price.png" alt="">
+                <span>You won't find it cheaper anywhere.</span>
+            </div>
+        </div>
+
+        <div class="checkout">
+            <p>Promo code can be apply on payment page.</p>
+            <a class="btn btn--pink" (click)="checkout()" href="javascript:void(0)">
+            <span>Proceed to Checkout</span>
+            <span>Rs. {{total}} ></span>
+            </a>
+        </div>
+    </ng-template>
+    <a *ngIf="cartItem.length < 1" class="btn btn--pink" href="/home">Start Shopping</a>
+</div>
+

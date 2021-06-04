@@ -35,13 +35,15 @@ $shopping-cart-assignment-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
+@import 'variables';
 @import 'base';
 @import 'typo';
 @import 'components';
-@import 'header';
-@import 'home';
-@import 'sidebar';
-@import 'product';
-@import 'login';
-@import 'cart';
 @import 'query';
+
+
+.mat-dialog-container {
+  padding: 0 !important; 
+  border-radius: 0 !important;
+  overflow:auto !important;
+}

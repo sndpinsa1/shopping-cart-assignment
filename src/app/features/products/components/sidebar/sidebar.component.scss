@@ -1,0 +1,76 @@
+@import '~src/styles/variables';
+
+.sidebar {
+    background-color: $bg-color-gray;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li a:link,
+.sidebar ul li a:visited {
+    display: block;
+    text-decoration: none;
+    outline: none;
+    font-size: 90%;
+    padding: 10px 15px;
+    color: $color-txt-gray;
+    border-bottom: 1px solid rgb(197, 194, 194);
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:active {
+    background-color: rgb(245, 244, 244);
+    border-bottom: 1px solid rgb(197, 194, 194);
+}
+
+.active {
+    background-color: rgb(255, 255, 255);
+}
+
+
+.mobile-view{
+    display: none;
+}
+
+
+@media screen and (max-width:480px) {
+    .mobile-view {
+        display: block;
+    }
+
+    .desktop-view {
+        display: none;
+    }
+
+    
+
+    
+.sidebar ul li a:link,
+.sidebar ul li a:visited {
+    font-size: 90%;
+    padding: 10px 0;
+    color: $color-txt-gray;
+    border-bottom: 1px solid rgb(197, 194, 194);
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:active {
+    background-color: rgb(245, 244, 244);
+    border-bottom: 1px solid rgb(197, 194, 194);
+}
+
+}
+
+.mat-accordion .mat-expansion-panel {
+    background-color: $bg-color-pink ;
+}
+
+.mat-expansion-panel-header-title{
+    color:#fff;
+}
+
+.mat-expansion-panel-body{
+    padding: 0;
+}

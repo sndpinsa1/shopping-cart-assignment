@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="login-container">
+        <div class="heading-box">
+            <h2>Login</h2>
+            <p>Get access to your Orders, wishlist and recommendations.</p>
+        </div>
+        <form class="form-box" #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+            <mat-form-field >
+                <mat-label>Email</mat-label>
+                <input matInput name="email" placeholder="Enter email" ngModel required email>
+              </mat-form-field>
+            
+              <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput name="password" placeholder="Enter password" minlength="8" ngModel required>
+              </mat-form-field>
+              <button mat-raised-button  [disabled]="!loginForm.valid"  color="accent">Login</button>
+        </form>
+    </div>
+</div>

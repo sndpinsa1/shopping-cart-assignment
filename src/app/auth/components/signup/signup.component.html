@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="login-container">
+        <div class="heading-box">
+            <h2>Signup</h2>
+            <p>We do not share your personal detail with anyone.</p>
+        </div>
+        <form class="form-box" [formGroup]="signUpForm" (ngSubmit)="signup()">
+            
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput name="email" placeholder="Enter email" formControlName="firstName" required >
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput name="email" placeholder="Enter email" formControlName="lastName" required >
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput name="email" placeholder="Enter email" formControlName="email" required email>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput name="password" placeholder="Enter password" formControlName="password" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Confirm Password</mat-label>
+                <input matInput name="password" placeholder="Confirm password" formControlName="cnfPassword" required>
+            </mat-form-field>
+            <button mat-raised-button [disabled]="!signUpForm.valid" color="accent">Sign Up</button>
+        </form>
+    </div>
+</div>

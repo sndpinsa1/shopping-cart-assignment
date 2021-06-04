@@ -1,12 +1,13 @@
 import { MatDialogModule } from '@angular/material/dialog';
 import { Routes, RouterModule } from '@angular/router';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsComponent } from './products/products.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { CartComponent } from './cart/cart.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { CartComponent } from './components/cart/cart.component';
 import {MatIconModule} from '@angular/material/icon';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
 const childRoutes:Routes = [
@@ -39,10 +40,8 @@ const childRoutes:Routes = [
     CartComponent
   ],
   imports: [
-    CommonModule,
-    MatIconModule,
     RouterModule.forChild(childRoutes),
-    MatDialogModule
+    SharedModule
   ],
   exports:[RouterModule]
 })

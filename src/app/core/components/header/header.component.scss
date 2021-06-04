@@ -1,0 +1,95 @@
+@import "~/src/styles/variables";
+
+nav {
+    // border-bottom: 1px solid $bg-color-gray;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.navbar {
+    display: flex;
+}
+
+.logo-container {
+    width: 25%;
+}
+
+.logo-container img {
+    width: 80%;
+    padding: 10px 0 ;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+.signup {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.signup a:link,
+.signup a:visited {
+    text-decoration: none;
+    color:$color-txt-gray;
+    font-size: 80%;
+    font-weight: 500;
+    margin: 0px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.signup a:hover,
+.signup a:active {
+    color:#000;
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.main-nav ul {
+    list-style: none;
+}
+
+.main-nav ul li {
+    display: inline-block;
+}
+
+.main-nav a:link,
+.main-nav a:visited {
+    display: inline-block;
+    text-decoration: none;
+    color: $color-txt-gray;
+    font-size: 85%;
+    font-weight: 600;
+    padding: 16px 16px;
+}
+
+.main-nav a:hover,
+.main-nav a:active {
+  background-color: $bg-color-gray;
+}
+
+.cart {
+    display: flex !important;
+    flex-direction: row;
+    padding:10px 10px !important;
+    align-items: center;
+}
+
+.icon-cart-pink {
+    fill:$bg-color-pink;
+}
+
+.icon-cart-pink svg{
+    width: 25px;
+    height: 25px;
+    display:inline-block;
+    vertical-align: top;
+    margin:0 10px;
+}
