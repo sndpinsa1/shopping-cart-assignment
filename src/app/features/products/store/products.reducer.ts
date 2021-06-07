@@ -11,7 +11,7 @@ export interface State {
 }
 
 const initialState: State = {
-  items:[],
+  items:getCartItemFromLocalStorage(),
   products:[],
   errorMsg:'',
   selectedCategoryId: null
@@ -20,9 +20,11 @@ const initialState: State = {
 const productPageReducer = createReducer(
   initialState,
   on(ProductActions.addToCart, (state, { cart }) => {
+    const cartItems = [...state.items, cart];
+    setCartItemToLocalStorage(cartItems);
     return {
       ...state,
-      items: [...state.items, cart]
+      items: cartItems
     };
   }),
   on(ProductActions.updateCartItem, (state, {index,action})=>{
@@ -37,6 +39,7 @@ const productPageReducer = createReducer(
       }else{
           updatedCartArray[index] = updatedItem
       }
+      setCartItemToLocalStorage(updatedCartArray);
       return {
         ...state,
         items: updatedCartArray
@@ -71,6 +74,26 @@ const productPageReducer = createReducer(
   })
 );
 
+function setCartItemToLocalStorage(cartItems:Cart[]):void{
+  localStorage.setItem('cart',JSON.stringify(cartItems))
+}
+
+function getCartItemFromLocalStorage():Cart[]{
+
+  let cartItems:Cart[] = [];
+
+  const cartString = localStorage.getItem('cart');
+
+  if(cartString){
+    try{
+      cartItems = JSON.parse(cartString);
+    }catch(e){
+      console.log(e);
+      cartItems = [];
+    }
+  }
+  return cartItems;
+}
 export function productsReducer(state: State | undefined, action: Action) {
   return productPageReducer(state, action);
 }

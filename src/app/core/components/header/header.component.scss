@@ -93,3 +93,22 @@ nav {
     vertical-align: top;
     margin:0 10px;
 }
+
+// media query
+// for tablets
+@media screen and (max-width: 768px) {
+    .row {
+        width: 100%;
+        padding: 0 10px;
+    }
+    
+}
+
+//for mobiles
+
+@media screen and (max-width:480px) {
+    .row {
+        width: 100%;
+        padding: 0 10px;
+    }
+}

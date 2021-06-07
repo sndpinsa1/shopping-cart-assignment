@@ -6,43 +6,17 @@ import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CartComponent } from './components/cart/cart.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
-
-
-const childRoutes:Routes = [
-  {
-    path:'cart',
-    component:CartComponent
-  },
-  {
-      path:'',
-      component:ProductsComponent,
-      children: [
-        {
-          path:'',
-          component:ProductListComponent
-        },
-        {
-          path:':catid',
-          component:ProductListComponent
-        }
-      ]
-  }
-]
-
+import { ProductsRoutingModule } from './products-routing.module';
 
 @NgModule({
   declarations: [
     ProductsComponent,
     SidebarComponent,
     ProductListComponent,
-    CartComponent
+    CartComponent,
   ],
-  imports: [
-    RouterModule.forChild(childRoutes),
-    SharedModule
-  ],
-  exports:[RouterModule]
+  imports: [ProductsRoutingModule, SharedModule]
 })
-export class ProductsModule { }
+export class ProductsModule {}

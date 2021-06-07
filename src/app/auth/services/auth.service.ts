@@ -5,9 +5,7 @@ import * as formApp from "../../store";
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../store/actions/auth.action';
 import { MessageService } from '../../core/services/message.service';
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
   users:User[] = [];
   constructor(
@@ -18,9 +16,9 @@ export class AuthService {
 
   signup(user:User){
     if(sessionStorage.getItem('users')){
-      let userString:string | null = sessionStorage.getItem('users');
-      let users:User[] = JSON.parse(userString? userString : "[]");
-      let alreadyExist = users.find(userElement => userElement.email ===  user.email);
+      const userString:string | null = sessionStorage.getItem('users');
+      const users:User[] = JSON.parse(userString? userString : "[]");
+      const alreadyExist = users.find(userElement => userElement.email ===  user.email);
       if(alreadyExist){
         this.msgService.show('User already exists!')
         return;
@@ -39,9 +37,9 @@ export class AuthService {
 
   login(user:User){
     if(sessionStorage.getItem('users')){
-      let userString:string | null = sessionStorage.getItem('users');
-      let users:User[] = JSON.parse(userString? userString : "[]");
-      let alreadyExist = users.find(userElement => userElement.email ===  user.email);
+      const userString:string | null = sessionStorage.getItem('users');
+      const users:User[] = JSON.parse(userString? userString : "[]");
+      const alreadyExist = users.find(userElement => userElement.email ===  user.email);
       if(alreadyExist){
         if(alreadyExist.email === user.email && alreadyExist.password === user.password){
           this.store.dispatch(AuthActions.login({email:alreadyExist.email, password:alreadyExist.password, firstName:alreadyExist.firstName}))

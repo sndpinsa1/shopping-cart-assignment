@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoaderComponent } from './components/loader/loader.component';
 
@@ -9,6 +8,8 @@ import { LoaderService } from './services/loader.service';
 import { DataService } from './services/data.service';
 import { MessageService } from './services/message.service';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,10 @@ import { RouterModule } from '@angular/router';
     FooterComponent
   ],
   imports: [
-    CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers:[
     LoaderService,
@@ -30,7 +33,9 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     FooterComponent,
     LoaderComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CoreModule { }

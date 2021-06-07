@@ -5,30 +5,45 @@
             <p>We do not share your personal detail with anyone.</p>
         </div>
         <form class="form-box" [formGroup]="signUpForm" (ngSubmit)="signup()">
-            
+
             <mat-form-field>
                 <mat-label>First Name</mat-label>
-                <input matInput name="email" placeholder="Enter email" formControlName="firstName" required >
+                <input matInput name="firstName" placeholder="Enter first name" formControlName="firstName"
+                    aria-label="firstName"
+                    aria-required="true" 
+                    aria-invalid="true">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Last Name</mat-label>
-                <input matInput name="email" placeholder="Enter email" formControlName="lastName" required >
+                <input matInput name="lastName" placeholder="Enter last name" formControlName="lastName"
+                    aria-label="lastName"
+                    aria-required="true" 
+                    aria-invalid="true">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput name="email" placeholder="Enter email" formControlName="email" required email>
+                <input matInput name="email" placeholder="Enter email" formControlName="email" 
+                    aria-label="email"
+                    aria-required="true"
+                    aria-invalid="true">
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input matInput name="password" placeholder="Enter password" formControlName="password" required>
+                <mat-label for="password">Password</mat-label>
+                <input matInput name="password" placeholder="Enter password" formControlName="password"
+                    aria-label="password"
+                    aria-required="true" 
+                    aria-invalid="true">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Confirm Password</mat-label>
-                <input matInput name="password" placeholder="Confirm password" formControlName="cnfPassword" required>
+                <input matInput name="confirmPassword" placeholder="Confirm password" formControlName="cnfPassword"
+                    aria-label="confirmPassword"
+                    aria-required="true" 
+                    aria-invalid="true">
             </mat-form-field>
             <button mat-raised-button [disabled]="!signUpForm.valid" color="accent">Sign Up</button>
         </form>

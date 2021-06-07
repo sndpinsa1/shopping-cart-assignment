@@ -47,3 +47,17 @@
     <a *ngIf="cartItem.length < 1" class="btn btn--pink" href="/home">Start Shopping</a>
 </div>
 
+<ng-template #loginPopup>
+    <div class="login-popup">
+        <div class="header">
+            Request !
+        </div>
+        <div class="content">
+            Login is required for checkout.
+        </div>
+        <div class="action">
+            <button class="btn" (click)="cancel()">Cancel</button>
+            <button class="btn btn--pink" (click)="ok()">Ok</button>
+        </div>
+    </div>
+</ng-template>

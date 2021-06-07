@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
     
   }
 
-  ngOnInit(){
+  ngOnInit():void{
     this.loader.loaderStatus.subscribe(isShow=>{
       this.isLoading = isShow;
     })

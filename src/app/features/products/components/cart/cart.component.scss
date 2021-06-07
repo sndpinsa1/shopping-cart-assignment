@@ -125,4 +125,21 @@
     }
 }
 
-
+.login-popup{
+    .header {
+        padding: 10px;
+        background-color:$bg-color-pink;
+        color: white;
+    }
+    .content {
+        padding: 20px;
+        margin: 10px 0px;
+    }
+    .action {
+        padding:10px;
+        text-align: right;
+        .btn {
+            margin: 0 5px;
+        }
+    }
+}

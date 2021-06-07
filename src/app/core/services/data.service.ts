@@ -4,23 +4,24 @@ import { Injectable } from '@angular/core';
 import { Category } from '../../shared/shared/models/category';
 import { Product } from '../../shared/shared/models/product';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getCategories() {
+  getCategories():Observable<Category[]> {
     return this.http.get<Category[]>(
       '/assets/server/categories/categories.json'
     );
   }
 
-  getBanners() {
+  getBanners():Observable<Banner[]>  {
     return this.http.get<Banner[]>('/assets/server/banners/banners.json');
   }
 
-  getProducts(catID: string|null) {
+  getProducts(catID: string|null):Observable<Product[]>  {
 
     if (!catID) {
       return this.http.get<Product[]>(
@@ -38,7 +39,7 @@ export class DataService {
         );
     }
   }
-  addToCart(){
-    return this.http.get('/assets/server/addToCart/addtocart.json');
+  addToCart():Observable<{response:string, responseMessage:string}>{
+    return this.http.get<{response:string, responseMessage:string}>('/assets/server/addToCart/addtocart.json');
   }
 }

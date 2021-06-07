@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit, AfterViewInit{
+export class SidebarComponent implements OnInit{
   @Input() categories:Category[]=[];
   panelOpenState = false;
   selectionCat:string | undefined;
@@ -28,11 +28,7 @@ export class SidebarComponent implements OnInit, AfterViewInit{
     )
   }
 
-  ngAfterViewInit(){
-    console.log( document.getElementsByClassName('active'))
-  }
-
-  onSelect(catName:string){
+  onSelect(catName:string):void{
     this.selectionCat = catName;
   }
 

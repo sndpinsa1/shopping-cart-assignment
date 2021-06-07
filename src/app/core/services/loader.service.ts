@@ -12,7 +12,7 @@ export class LoaderService {
 
   constructor() { }
 
-  setLoaderStatus(isShowLoader:boolean){
+  setLoaderStatus(isShowLoader:boolean):void{
     this.showLoader.next(isShowLoader);
   }
 }

@@ -2,7 +2,7 @@ import { AppEffects } from './store/effects/app.effects';
 import { CoreModule } from './core/core.module';
 import { ProductEffects } from './features/products/store/products.effects';
 import { LoaderInterceptorService } from './core/intercepters/loader-interceptor.service';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,8 +26,6 @@ import { HomeEffects } from './home/store/effects/home.effects';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
     SharedModule,
     CoreModule,
     StoreModule.forRoot(fromApp.appReducer),
@@ -36,7 +34,6 @@ import { HomeEffects } from './home/store/effects/home.effects';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true }
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
