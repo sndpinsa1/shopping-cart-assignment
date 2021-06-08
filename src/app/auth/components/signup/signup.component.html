@@ -9,41 +9,31 @@
             <mat-form-field>
                 <mat-label>First Name</mat-label>
                 <input matInput name="firstName" placeholder="Enter first name" formControlName="firstName"
-                    aria-label="firstName"
-                    aria-required="true" 
-                    aria-invalid="true">
+                    aria-label="firstName" aria-required="true" aria-invalid="true">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Last Name</mat-label>
                 <input matInput name="lastName" placeholder="Enter last name" formControlName="lastName"
-                    aria-label="lastName"
-                    aria-required="true" 
-                    aria-invalid="true">
+                    aria-label="lastName" aria-required="true" aria-invalid="true">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput name="email" placeholder="Enter email" formControlName="email" 
-                    aria-label="email"
-                    aria-required="true"
-                    aria-invalid="true">
+                <input matInput name="email" placeholder="Enter email" formControlName="email" aria-label="email"
+                    aria-required="true" aria-invalid="true">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label for="password">Password</mat-label>
-                <input matInput name="password" placeholder="Enter password" formControlName="password"
-                    aria-label="password"
-                    aria-required="true" 
-                    aria-invalid="true">
+                <input type="password" matInput name="password" placeholder="Enter password" formControlName="password"
+                    aria-label="password" aria-required="true" aria-invalid="true">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Confirm Password</mat-label>
-                <input matInput name="confirmPassword" placeholder="Confirm password" formControlName="cnfPassword"
-                    aria-label="confirmPassword"
-                    aria-required="true" 
-                    aria-invalid="true">
+                <input type="password" matInput name="confirmPassword" placeholder="Confirm password" formControlName="cnfPassword"
+                    aria-label="confirmPassword" aria-required="true" aria-invalid="true">
             </mat-form-field>
             <button mat-raised-button [disabled]="!signUpForm.valid" color="accent">Sign Up</button>
         </form>

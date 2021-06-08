@@ -7,35 +7,24 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoaderService } from './services/loader.service';
 import { DataService } from './services/data.service';
 import { MessageService } from './services/message.service';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
+const ALL_COMPONENTS = [
+  PageNotFoundComponent,
+  LoaderComponent,
+  HeaderComponent,
+  FooterComponent
+]
 @NgModule({
   declarations: [
-    PageNotFoundComponent,
-    LoaderComponent,
-    HeaderComponent,
-    FooterComponent
+    ...ALL_COMPONENTS
   ],
   imports: [
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
     SharedModule
   ],
-  providers:[
-    LoaderService,
-    DataService,
-    MessageService
-  ],
+  providers:[],
   exports:[
-    HeaderComponent,
-    FooterComponent,
-    LoaderComponent,
-    PageNotFoundComponent,
-    FormsModule,
-    ReactiveFormsModule
+    ...ALL_COMPONENTS
   ]
 })
 export class CoreModule { }

@@ -1,45 +1,37 @@
-import { Banner } from '../../shared/shared/models/banner';
+import { environment }  from './../../../environments/environment';
+import { Banner } from '../../features/home/models/banner';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category } from '../../shared/shared/models/category';
-import { Product } from '../../shared/shared/models/product';
+import { Category } from '../../shared/models/category';
+import { Product } from '../../features/products/models/product';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({providedIn:'root'})
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getCategories():Observable<Category[]> {
-    return this.http.get<Category[]>(
-      '/assets/server/categories/categories.json'
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(environment.AppApi.GET_CATEGORIES);
+  }
+
+  getBanners(): Observable<Banner[]> {
+    return this.http.get<Banner[]>(environment.AppApi.GET_BANNERS);
+  }
+
+  getProducts(catID = ''): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.AppApi.GET_PRODUCTS).pipe(
+      map((products) =>
+        products.filter((product) => {
+          if (catID) return product.category == catID;
+          else return product;
+        })
+      )
     );
   }
 
-  getBanners():Observable<Banner[]>  {
-    return this.http.get<Banner[]>('/assets/server/banners/banners.json');
-  }
-
-  getProducts(catID: string|null):Observable<Product[]>  {
-
-    if (!catID) {
-      return this.http.get<Product[]>(
-        '/assets/server/products/products.json'
-      );
-    } else {
-      return this.http
-        .get<Product[]>('/assets/server/products/products.json')
-        .pipe(
-          map(
-            products => products.filter(product=>{
-              return product.category == catID
-            })
-          )
-        );
-    }
-  }
-  addToCart():Observable<{response:string, responseMessage:string}>{
-    return this.http.get<{response:string, responseMessage:string}>('/assets/server/addToCart/addtocart.json');
+  addToCart(): Observable<{ response: string; responseMessage: string }> {
+    return this.http.get<{ response: string; responseMessage: string }>(
+      environment.AppApi.ADD_TO_CART
+    );
   }
 }

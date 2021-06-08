@@ -44,3 +44,15 @@ $shopping-cart-assignment-theme: mat.define-light-theme((
   border-radius: 0 !important;
   overflow:auto !important;
 }
+
+// Error handling class
+.error{
+  background-color: $color-warning;
+  color: #fff;
+}
+
+
+//mat backdrop class
+.custom-overlay {
+  background: rgba(0, 0, 0, 0.60);
+}

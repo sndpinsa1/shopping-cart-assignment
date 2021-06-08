@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoaderComponent } from './loader.component';
+import { LoaderService } from '../../services/loader.service';
 
 describe('LoaderComponent', () => {
   let component: LoaderComponent;
@@ -8,7 +9,8 @@ describe('LoaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoaderComponent ]
+      declarations: [ LoaderComponent ],
+      providers:[LoaderService]
     })
     .compileComponents();
   });
@@ -22,4 +24,9 @@ describe('LoaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should not be loading while flag false', ()=>{
+    const loaderEl:HTMLElement = fixture.nativeElement;
+    const div = loaderEl.querySelector('div')
+  })
 });

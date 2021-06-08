@@ -5,21 +5,19 @@
             <p>Get access to your Orders, wishlist and recommendations.</p>
         </div>
         <form class="form-box" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput name="email" placeholder="Enter email" formControlName="email" 
-                    aria-label="email"
-                    aria-required="true"
-                    aria-invalid="true">
-            </mat-form-field>
+            <div class="form-field">
+                <input formControlName="email" class="form-input" type="email" placeholder=" ">
+                <span class="highlight"></span>
+                <label>Email</label>
+            </div>
 
-            <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input matInput name="password" placeholder="Enter password" formControlName="password"
-                    aria-label="password"
-                    aria-required="true">
-            </mat-form-field>
-            <button mat-raised-button [disabled]="!loginForm.valid" color="accent">Login</button>
+            <div class="form-field">
+                <input formControlName="password" class="form-input" type="password" placeholder=" ">
+                <span class="highlight"></span>
+                <label>Password</label>
+            </div>
+
+            <input [disabled]="!loginForm.valid" class="btn btn--pink" type="submit" value="Login">
         </form>
     </div>
 </div>

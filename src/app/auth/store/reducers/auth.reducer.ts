@@ -2,18 +2,17 @@ import { createReducer, on, Action } from '@ngrx/store';
 import { User } from '../../models/user.model';
 import * as AuthActions from '../actions/auth.action'
 export interface State {
-  user: User | null;
+  user: User;
 }
 
 const initialState: State = {
-  user: null,
+  user: {email:'', password:''},
 };
 
 
 const authPageReducer = createReducer(
     initialState,
-    on(AuthActions.login, (state, {email, password, firstName})=>{
-        const user = {email,password,firstName};
+    on(AuthActions.login, (state, {user})=>{
         return {
             ...state,
             user
@@ -22,7 +21,7 @@ const authPageReducer = createReducer(
     on(AuthActions.logout, (state, {})=>{
         return {
             ...state,
-            user:null
+            user:{email:'', password:''}
         }
     })
   );

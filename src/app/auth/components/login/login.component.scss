@@ -1,28 +1,87 @@
+@import "~src/styles/variables";
 
 .login-container {
-    padding: 50px;
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  .heading-box {
+    padding: 30px;
+  }
+  .form-box {
+    width: 40%;
     display: flex;
-    flex-direction: row;
-    .heading-box {
-      padding: 30px;
+    flex-direction: column;
+    padding: 0 0 0 20px;
+    .form-field {
+      position: relative;
+      margin-bottom: 30px;
     }
+
+    .form-input {
+      padding: 4px 4px;
+      display: block;
+      width: 100%;
+      height: 30px;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid $bg-color-gray;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-bottom: 2px solid $bg-color-lightblue;
+    }
+
+    label {
+      color: $color-txt-gray;
+      font-size: 85%;
+      position: absolute;
+      pointer-events: none;
+      top: 5px;
+      transition: 0.2s ease all;
+      -moz-transition: 0.2s ease all;
+      -webkit-transition: 0.2s ease all;
+    }
+
+    .form-input:focus ~ label,
+    .form-input:not(:placeholder-shown) ~ label {
+      top: -18px;
+      font-size: 70%;
+      color: $bg-color-lightblue;
+    }
+
+    .highlight {
+      position: absolute;
+      height: 50%;
+      width: 100%;
+      top: 15%;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+}
+
+// auto classes
+input.ng-dirty.ng-invalid {
+  border-bottom: 2px solid $bg-color-pink !important;
+}
+
+input[type="button" i]:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    width: 100%;
+  }
+  .login-container {
+    padding: 10px;
+    flex-direction: column;
     .form-box {
-      width: 40%;
-      display: flex;
-      flex-direction: column;
-      padding: 0 0 0 20px;
+      width: 100%;
+      padding: 0 30px;
     }
   }
-  
-
-  @media screen and  (max-width:768px) {
-    .login-container {
-      padding: 10px;
-      flex-direction: column;
-      .form-box {
-        width: 100%;
-        padding: 0 30px;
-      }
-    }
-
-  }
+}

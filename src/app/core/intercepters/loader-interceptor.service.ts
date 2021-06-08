@@ -8,11 +8,11 @@ import { LoaderService } from '../services/loader.service';
 export class LoaderInterceptorService implements HttpInterceptor {
   constructor(public loaderService: LoaderService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      this.loaderService.setLoaderStatus(true);
+      this.loaderService.setLoaderStatus = true;
       return next.handle(req).pipe(
           finalize(() => {
             setTimeout(()=>{
-              this.loaderService.setLoaderStatus(false);
+              this.loaderService.setLoaderStatus = false;
             },300)
           })
       );

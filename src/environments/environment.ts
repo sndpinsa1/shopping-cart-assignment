@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  AppApi : {
+    GET_CATEGORIES:'/assets/server/categories/categories.json',
+    GET_BANNERS:'/assets/server/banners/banners.json',
+    GET_PRODUCTS:'/assets/server/products/products.json',
+    ADD_TO_CART:'/assets/server/addToCart/addtocart.json'
+  }
 };
 
 /*
@@ -14,3 +20,4 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+

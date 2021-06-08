@@ -51,7 +51,7 @@
 .sidebar ul li a:visited {
     font-size: 90%;
     padding: 10px 0;
-    color: $color-txt-gray;
+    color: #fff;
     border-bottom: 1px solid rgb(197, 194, 194);
 }
 
@@ -73,4 +73,8 @@
 
 .mat-expansion-panel-body{
     padding: 0;
+}
+
+.mat-accordion .mat-expansion-panel-header-description, .mat-expansion-indicator::after {
+    color:#fff !important;
 }

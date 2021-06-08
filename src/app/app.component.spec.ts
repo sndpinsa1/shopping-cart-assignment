@@ -1,12 +1,21 @@
+import { StoreModule } from '@ngrx/store';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-
-describe('AppComponent', () => {
+import { CoreModule } from './core/core.module';
+import * as fromApp from './store/reducers/app.reducer'
+import * as appEffects from './store/effects/app.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+fdescribe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        CoreModule,
+        HttpClientModule,
+        StoreModule.forRoot(fromApp.appReducer),
+        EffectsModule.forRoot([...appEffects.ALL_EFFECTS])
       ],
       declarations: [
         AppComponent
@@ -20,16 +29,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'shopping-cart-assignment'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('shopping-cart-assignment');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('shopping-cart-assignment app is running!');
-  });
 });

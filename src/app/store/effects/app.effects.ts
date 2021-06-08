@@ -2,9 +2,11 @@ import { switchMap, map, catchError } from 'rxjs/operators';
 import { DataService } from './../../core/services/data.service';
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import * as fromApp from '../';
-import { Category } from 'src/app/shared/shared/models/category';
+import * as fromShared from '../../shared/store/actions/shared.actions';
+import { Category } from 'src/app/shared/models/category';
 import { of } from 'rxjs';
+import { HomeEffects } from '../../features/home/store/effects/home.effects';
+import { ProductEffects } from '../../features/products/store/effects/products.effects';
 
 @Injectable()
 export class AppEffects{
@@ -14,14 +16,16 @@ export class AppEffects{
     ){}
 
     fetchCategories = createEffect(()=>this.actions$.pipe(
-        ofType(fromApp.fetchCategories),
+        ofType(fromShared.fetchCategories),
         switchMap(()=>{
             return this.dataService.getCategories().pipe(
-                map((cat:Category[])=> fromApp.setCategories({categories:cat})),
+                map((cat:Category[])=> fromShared.setCategories({categories:cat})),
                 catchError((error)=>{
-                    return of(fromApp.catLoadFail({errorMessage:error.message}))
+                    return of(fromShared.catLoadFail({errorMessage:error.message}))
                 })
             )
         })
     ))
 }
+
+export const ALL_EFFECTS = [AppEffects, HomeEffects, ProductEffects]

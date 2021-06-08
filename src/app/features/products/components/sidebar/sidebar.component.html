@@ -11,7 +11,7 @@
         <mat-expansion-panel #mat="matExpansionPanel">
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    {{selectionCat ? selectionCat : 'All Products'}}
+                    {{selectionCat || 'All Products'}}
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <ul>

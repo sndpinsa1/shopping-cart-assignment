@@ -1,6 +1,12 @@
+<!-- Header and navigation component -->
 <app-header></app-header>
+
+<!-- Routing directive where all routing components rendered -->
 <router-outlet></router-outlet>
 
+
+<!-- Footer of application -->
 <app-footer></app-footer>
 
-<app-loader *ngIf="isLoading"></app-loader>
+<!-- Loader/Spinner runs on every api call and route change -->
+<app-loader></app-loader>

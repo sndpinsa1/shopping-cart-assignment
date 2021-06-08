@@ -1,17 +1,18 @@
 import { User } from '../../../auth/models/user.model';
-import { getCartItems } from '../../../features/products/store/products.selectors';
-import { Cart } from '../../../shared/shared/models/cart';
+import { Cart } from '../../../features/products/models/product';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as fromApp from '../../../store'
+import * as fromApp from '../../../store/reducers/app.reducer'
 import * as AuthActions from '../../../auth/store/actions/auth.action';
-import * as HomeActions from '../../../home/store/actions/home.action';
+import * as HomeActions from '../../../features/home/store/actions/home.action';
+import * as SharedActions from '../../../shared/store/actions/shared.actions'
 import { CartComponent } from 'src/app/features/products/components/cart/cart.component';
 import { MessageService } from '../../services/message.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AppGlbMessages } from '../../../shared/constants/app-glb-messages';
 
 @Component({
   selector: 'app-header',
@@ -20,8 +21,8 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   items:Cart[] = [];
-  loggedInUser:User | null;
-  notifier = new Subject();
+  loggedInUser:User;
+  private notifier = new Subject();
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -30,10 +31,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.store.select(getCartItems)
+    this.store.select('products')
     .pipe(takeUntil(this.notifier))
     .subscribe(
-      items=>this.items = items
+      productState=>this.items = productState.items
     )
     this.store.select('auth')
     .pipe(takeUntil(this.notifier))
@@ -42,7 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     )
 
     this.store.dispatch(HomeActions.loadHomePageData());
-    this.store.dispatch(fromApp.fetchCategories());
+    this.store.dispatch(SharedActions.fetchCategories());
 
   }
 
@@ -51,8 +52,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.dialog.open(
         CartComponent,
         {
-          width: '280px',
-          height:"70vh",
+          width: '350px',
+          height:"80vh",
+          backdropClass:'custom-overlay',
           position:{
             right: "150px",
             top:"95px"
@@ -66,7 +68,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logout():void{
     this.store.dispatch(AuthActions.logout());
-    this.msgService.show("Logout Successfully !");
+    this.msgService.show(AppGlbMessages.LOGOUT_SUCCESS);
     this.router.navigate(['/home']);
     
   }
