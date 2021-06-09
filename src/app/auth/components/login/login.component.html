@@ -6,18 +6,19 @@
         </div>
         <form class="form-box" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
             <div class="form-field">
-                <input formControlName="email" class="form-input" type="email" placeholder=" ">
+                <input aria-label="email" formControlName="email" name="email" class="form-input" type="email" placeholder=" " aria-required="true" aria-invalid="true">
                 <span class="highlight"></span>
                 <label>Email</label>
             </div>
 
             <div class="form-field">
-                <input formControlName="password" class="form-input" type="password" placeholder=" ">
+                <input id="password" formControlName="password" name="password" class="form-input" type="password" placeholder=" " aria-required="true" aria-invalid="true">
                 <span class="highlight"></span>
-                <label>Password</label>
+                <label for="password">Password</label>
+
             </div>
 
-            <input [disabled]="!loginForm.valid" class="btn btn--pink" type="submit" value="Login">
+            <button [disabled]="!loginForm.valid" class="btn btn--pink" type="submit">Login</button>
         </form>
     </div>
 </div>

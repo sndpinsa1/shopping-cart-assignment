@@ -22,6 +22,7 @@ import { AppGlbMessages } from '../../../shared/constants/app-glb-messages';
 export class HeaderComponent implements OnInit, OnDestroy {
   items:Cart[] = [];
   loggedInUser:User;
+  isDesktop:boolean = false;
   private notifier = new Subject();
   constructor(
     public dialog: MatDialog,
@@ -31,6 +32,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.store.dispatch(HomeActions.loadHomePageData());
+    this.store.dispatch(SharedActions.fetchCategories());
+    this.isDesktop = window.screen.width > 768;
     this.store.select('products')
     .pipe(takeUntil(this.notifier))
     .subscribe(
@@ -42,13 +46,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       appState=> this.loggedInUser = appState.user
     )
 
-    this.store.dispatch(HomeActions.loadHomePageData());
-    this.store.dispatch(SharedActions.fetchCategories());
-
   }
 
   onCartClick():void{
-    if(window.screen.width > 768){
+    if(this.isDesktop){
       this.dialog.open(
         CartComponent,
         {

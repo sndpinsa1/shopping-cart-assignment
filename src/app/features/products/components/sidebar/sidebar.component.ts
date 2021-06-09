@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Category } from 'src/app/shared/models/category';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/reducers/app.reducer';
-import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -24,7 +23,7 @@ export class SidebarComponent implements OnInit {
       );
       this.selectionCat = cat?.name;
     });
-  }
+}
 
   onSelect(catName: string): void {
     this.selectionCat = catName;

@@ -6,6 +6,7 @@ import {
   TemplateRef,
   ViewChild,
   OnDestroy,
+  ElementRef,
 } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -24,10 +25,10 @@ import { takeUntil } from 'rxjs/operators';
 export class CartComponent implements OnInit, OnDestroy {
   cartItem: Cart[] = [];
   isDesktop: boolean = false;
-  loggedInUser: User | null;
+  loggedInUser: User = {email:'', password:''};
   @ViewChild('loginPopup') loginPopup: TemplateRef<any>;
-  matDialogRef: MatDialogRef<any>;
-  notifier = new Subject();
+  matDialogRef: MatDialogRef<TemplateRef<any>>;
+  private notifier = new Subject();
   constructor(
     private injector: Injector,
     private router: Router,
@@ -41,7 +42,9 @@ export class CartComponent implements OnInit, OnDestroy {
     this.store
       .select('products')
       .pipe(takeUntil(this.notifier))
-      .subscribe((productState) => (this.cartItem = productState.items));
+      .subscribe((productState) => {
+        this.cartItem = productState.items;
+      });
 
     this.store
       .select('auth')
@@ -75,7 +78,7 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   checkout(): void {
-    if (!this.loggedInUser) {
+    if (!this.loggedInUser.email) {
       this.matDialogRef = this.dialog.open(this.loginPopup, {
         width: '300px',
       });

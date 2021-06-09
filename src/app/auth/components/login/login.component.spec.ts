@@ -9,7 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromApp from '../../../store/reducers/app.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 

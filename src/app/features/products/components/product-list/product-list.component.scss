@@ -28,15 +28,6 @@
   border-bottom: 2px dashed #eeeeee;
   padding: 12px;
   margin-bottom: 20px;
-  &:after {
-    top: 15%;
-    right: -5px;
-    position: absolute;
-    content: "";
-    width: 4px;
-    height: 70%;
-    background-color: $bg-color-gray;
-  }
   .small {
     flex: 1 1 0;
     display: flex;
@@ -70,8 +61,10 @@
   }
 
   &--price {
-    font-size: 85%;
+    font-size: 90%;
     font-weight: bold;
+    flex-grow: 1;
+    text-align: center;
     align-self: center;
   }
 }
@@ -142,3 +135,10 @@
 }
 
 
+.vertical {
+  border-left: 3px solid #eee;
+  height: 80%;
+  top: 60px;
+  position: absolute;
+  right: 0;
+}

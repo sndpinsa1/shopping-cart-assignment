@@ -8,6 +8,7 @@ import * as fromApp from '../../../../store/reducers/app.reducer';
 import * as ProductActions from '../../store/actions/products.action';
 import { MessageService } from '../../../../core/services/message.service';
 import { Subject } from 'rxjs';
+import { AppGlbMessages } from '../../../../shared/constants/app-glb-messages';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -53,7 +54,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         }
       });
     } else {
-      this.msgService.show('Item already into the cart!');
+      this.msgService.error(AppGlbMessages.ITEM_ALREADY_INTO_CART);
     }
   }
 

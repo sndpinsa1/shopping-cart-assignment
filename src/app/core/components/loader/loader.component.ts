@@ -25,9 +25,7 @@ export class LoaderComponent implements OnInit {
         this.loader.setLoaderStatus = true;
       }
       if (evt instanceof NavigationEnd) {
-        setTimeout(()=>{
         this.loader.setLoaderStatus = false;
-        },300)
       }
     })
     

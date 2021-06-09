@@ -25,15 +25,15 @@
             </mat-form-field>
 
             <mat-form-field>
-                <mat-label for="password">Password</mat-label>
+                <mat-label>Password</mat-label>
                 <input type="password" matInput name="password" placeholder="Enter password" formControlName="password"
-                    aria-label="password" aria-required="true" aria-invalid="true">
+                    aria-required="true" aria-invalid="true">
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Confirm Password</mat-label>
                 <input type="password" matInput name="confirmPassword" placeholder="Confirm password" formControlName="cnfPassword"
-                    aria-label="confirmPassword" aria-required="true" aria-invalid="true">
+                    aria-required="true" aria-invalid="true">
             </mat-form-field>
             <button mat-raised-button [disabled]="!signUpForm.valid" color="accent">Sign Up</button>
         </form>

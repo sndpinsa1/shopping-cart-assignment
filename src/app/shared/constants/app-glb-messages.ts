@@ -5,5 +5,6 @@ export const AppGlbMessages = {
   INCORRECT_PWSD_EMIAL: 'Username or password is incorrect!',
   USER_NOT_FOUND: 'User not exist. Please Sigup First.',
   LOGOUT_SUCCESS: 'Logout Successfully.',
-  CNF_PASSWORD_NOT_MATCH: 'Password and confirm password not match.'
+  CNF_PASSWORD_NOT_MATCH: 'Password and confirm password not match.',
+  ITEM_ALREADY_INTO_CART:'Item already into the cart!'
 };

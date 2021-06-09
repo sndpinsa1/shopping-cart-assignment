@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import * as AuthActions from '../store/actions/auth.action';
 import { MessageService } from '../../core/services/message.service';
 import { AppGlbMessages } from '../../shared/constants/app-glb-messages';
-@Injectable()
+@Injectable({providedIn:'root'})
 export class AuthService {
   users: User[] = [];
   constructor(

@@ -7,7 +7,7 @@ import * as fromApp from './store/reducers/app.reducer'
 import * as appEffects from './store/effects/app.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [

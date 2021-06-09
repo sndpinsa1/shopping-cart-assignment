@@ -1,44 +1,40 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { StoreModule, Store } from '@ngrx/store';
 import * as fromApp from '../../../../store/reducers/app.reducer';
 import { MessageService } from '../../../../core/services/message.service';
 import { SharedModule } from 'src/app/shared/shared.module';
-import * as HomeActions from '../../../home/store/actions/home.action';
-import { DataService } from '../../../../core/services/data.service';
-import { of } from 'rxjs';
-fdescribe('HomeComponent', () => {
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { AppState } from '../../../../store/reducers/app.reducer';
+import { appState } from '../../../../shared/mocks/app-state.mock';
+describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
-  let homeStore:Store;
+  let store: MockStore;
+  let initialState: AppState = appState;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ],
-      imports: [StoreModule.forRoot(fromApp.appReducer), SharedModule],
-      providers:[
+      declarations: [HomeComponent],
+      imports: [
+        SharedModule
+      ],
+      providers: [
         MessageService,
-
-      ]
-    })
-    .compileComponents();
+        provideMockStore({initialState})
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    homeStore = TestBed.inject(Store);
+    store = TestBed.inject(MockStore);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  })
-
-  it('should destory component', () => {
-    
-  })
-
-  
+  });
 
 });

@@ -9,10 +9,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from '../../../store/reducers/app.reducer';
 
-fdescribe('SignupComponent', () => {
+describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
-
+  let authService: AuthService
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SignupComponent ],
@@ -31,6 +31,7 @@ fdescribe('SignupComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SignupComponent);
     component = fixture.componentInstance;
+    authService = TestBed.inject(AuthService);
     fixture.detectChanges();
   });
 
@@ -67,6 +68,22 @@ fdescribe('SignupComponent', () => {
     fixture.detectChanges();
     signBtn.click();
     expect(component.signUpForm.valid).toBeFalsy();
+  })
+
+  it('Sigup form should be submit on sigup password not match', ()=>{
+    component.signUpForm.setValue({
+      firstName:'Sandeep',
+      lastName:"saini",
+      email:"abc@gmail.com",
+      password:'12345678',
+      cnfPassword:'52341234'
+    });
+    const spy = spyOn(authService, 'signup');
+    const signEl:HTMLElement = fixture.nativeElement;
+    const signBtn:any = signEl.querySelector('button');
+    fixture.detectChanges();
+    signBtn.click();
+    expect(spy).not.toHaveBeenCalled();
   })
 
 

@@ -15,7 +15,7 @@ export class MessageService {
       })
     }
 
-    error(message:string):void{
+    error(message:string):void{ 
       this._snackBar.open(message, undefined, {
         duration : 3000,
         horizontalPosition: this.horizontalPosition,

@@ -12,7 +12,7 @@
             <button (click)="addToCart(product)" class="btn btn--pink">Buy Now</button>
         </div>
         <button (click)="addToCart(product)" class="btn btn--pink tab">Buy Now @ MRP Rs. {{product.price}}</button>
-
+        <div class="vertical"></div>
     </div>
 
     <div *ngFor="let product of products" class="mobile-list">
