@@ -46,7 +46,7 @@
             </a>
         </div>
     </ng-template>
-    <a *ngIf="cartItem.length < 1" class="btn btn--pink" routerLink="/home">Start Shopping</a>
+    <a *ngIf="cartItem.length < 1" class="btn btn--pink" routerLink="/products" (click)="onClose()">Start Shopping</a>
 </div>
 
 <ng-template #loginPopup>

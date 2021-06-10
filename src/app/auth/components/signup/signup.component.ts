@@ -12,6 +12,7 @@ import { AppGlbMessages } from '../../../shared/constants/app-glb-messages';
 })
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
+
   constructor(
     private fb: FormBuilder, 
     private authService: AuthService, 

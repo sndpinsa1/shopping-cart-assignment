@@ -5,10 +5,12 @@
         </div>
         <div class="small">
             <img [src]="product.imageURL" [alt]="product.name">
-            <p class="description">{{product.description}}</p>
+            <div class="description">
+                <p>{{product.description}}</p>
+            </div>
         </div>
         <div class="action">
-            <p class="product-card--price">MRP Rs. {{product.price}}</p>
+            <span class="product-card--price">MRP Rs. {{product.price}}</span>
             <button (click)="addToCart(product)" class="btn btn--pink">Buy Now</button>
         </div>
         <button (click)="addToCart(product)" class="btn btn--pink tab">Buy Now @ MRP Rs. {{product.price}}</button>
