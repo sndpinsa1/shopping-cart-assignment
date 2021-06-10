@@ -17,7 +17,7 @@
 .main-box {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 20px;
+  // padding-left: 20px;
 }
 
 .product-card {
@@ -52,10 +52,12 @@
     flex: 1 1 0;
     width: 100%;
     height: fit-content;
+    max-height: 163px;
   }
 
   &--title {
     margin-bottom: 10px;
+    flex-grow: 1;
   }
 
   .action {
