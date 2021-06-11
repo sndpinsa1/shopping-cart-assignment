@@ -1,0 +1,28 @@
+<div class="sidebar desktop-view">
+    <ul>
+        <li><a routerLink="/products" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">All Product</a></li>
+        <li *ngFor="let cat of categories">
+            <a *ngIf="cat.enabled" [routerLink]="cat.id" routerLinkActive="active">{{cat.name}}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="sidebar mobile-view">
+    <mat-accordion>
+        <mat-expansion-panel #mat="matExpansionPanel">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{selectionCat || 'All Products'}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ul>
+                <ng-container *ngFor="let cat of categories">
+                    <li *ngIf="cat.enabled">
+                        <a [routerLink]="cat.id" (click)="onSelect(cat.name); mat.close()">{{cat.name}}</a>
+                    </li>
+                </ng-container>
+            </ul>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

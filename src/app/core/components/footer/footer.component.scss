@@ -1,0 +1,12 @@
+@import "~src/styles/variables";
+
+p {
+  padding: 10px;
+  color: $color-txt-gray;
+  background-color: $bg-color-gray;
+  width: 100%;
+  text-align: center;
+  font-size: 75%;
+  font-weight: 600;
+  margin: 0;
+}
