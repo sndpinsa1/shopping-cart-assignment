@@ -25,10 +25,6 @@
     border-bottom: 1px solid rgb(197, 194, 194);
 }
 
-.active {
-    background-color: rgb(255, 255, 255);
-}
-
 
 .mobile-view{
     display: none;
@@ -78,3 +74,8 @@
 .mat-accordion .mat-expansion-panel-header-description, .mat-expansion-indicator::after {
     color:#fff !important;
 }
+
+
+.active {
+    background-color: rgb(255, 255, 255);
+  }

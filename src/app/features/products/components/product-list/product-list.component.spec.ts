@@ -53,24 +53,6 @@ describe('ProductListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be call when item already into the cart', () => {
-    const product: Product = {
-      name: 'Epigamia Greek Yogurt - Strawberry, 90 gm',
-      imageURL:
-        'assets/static/images/products/bakery-cakes-dairy/yogurt-red.jpg',
-      description: 'Low Fat and High protein delicious and thick Greek Yogurt.',
-      price: 40,
-      stock: 50,
-      category: '5b6899123d1a866534f516de',
-      sku: 'bcd-yogurt-red',
-      id: '5b6c6dd701a7c3842953088b',
-    };
-    const spy1 = spyOn(messageService, 'error');
-
-    component.addToCart(product);
-    expect(spy1).toHaveBeenCalled();
-  });
-
   it('should be call when new item add (addToCard Method)', () => {
     component.cartItems = [];
     const product: Product = {
@@ -97,5 +79,42 @@ describe('ProductListComponent', () => {
 
       expect(spy2).toHaveBeenCalled();
     });
+  });
+
+  it('should be call when new item add (with false response)', () => {
+    component.cartItems = [];
+    const product: Product = {
+      name: 'Bournvita Pro-Health Drink - Chocolate, 2x750 gm',
+      imageURL: 'assets/static/images/products/beverages/bournvita.jpg',
+      description:
+        'Cadbury Bournvita is a delicious chocolate health drink which is enriched with Vitamin (D,B2,B9,B12). It combines the great taste of chocolate, and goodness of essential nutrients that aid growth and development.',
+      price: 572,
+      stock: 50,
+      category: '5b675e5e5936635728f9fc30',
+      sku: 'bev-bournvita-750',
+      id: '5b6c6fbf01a7c3842953088e',
+    };
+    const spy1 = spyOn(messageService, 'show');
+    const spy2 = spyOn(store, 'dispatch');
+    const spy = spyOn(dataService, 'addToCart').and.returnValue(
+      of({ response: 'Error', responseMessage: 'item add to card' })
+    );
+    component.addToCart(product);
+
+    dataService.addToCart().subscribe((resp) => {
+      expect(resp.response).toEqual('Error');
+    });
+  });
+
+  it('should dispatch action on remove click', () => {
+    const spy = spyOn(store, 'dispatch');
+    component.remove('5b6c6a7f01a7c38429530883');
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should dispatch action on add click', () => {
+    const spy = spyOn(store, 'dispatch');
+    component.add('5b6c6a7f01a7c38429530883');
+    expect(spy).toHaveBeenCalled();
   });
 });

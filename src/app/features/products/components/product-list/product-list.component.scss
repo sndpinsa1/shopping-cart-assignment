@@ -42,9 +42,8 @@
 
       p {
         padding-bottom: 10px;
-      overflow: hidden;
-      height: 80px;
-
+        overflow: hidden;
+        height: 80px;
       }
     }
   }
@@ -62,10 +61,11 @@
 
   .action {
     display: flex;
+    max-height: 26px;
     justify-content: space-between;
   }
 
-  .tab {
+  .m-action {
     display: none;
   }
 
@@ -92,15 +92,18 @@
       width: 50%;
     }
     .desc {
-        display: flex;
-        flex-direction: column;
-        justify-content: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
       .description {
         flex-grow: 1;
         background-color: $bg-color-gray;
         padding: 5px;
         font-size: 70%;
         margin: 5px 5px 10px 5px;
+      }
+      div {
+        display: flex;
       }
     }
   }
@@ -141,6 +144,17 @@
     .action {
       display: none;
     }
+
+    &--price {
+      flex: 1 1 50%;
+    }
+    .m-action {
+      display: flex;
+      max-height: 26px;
+      button {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -155,11 +169,29 @@
   }
 }
 
-
 .vertical {
   border-left: 3px solid #eee;
   height: 80%;
   top: 60px;
   position: absolute;
   right: 0;
+}
+
+.count {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex: 1 1 50%;
+  justify-content: space-between;
+  height: 26px;
+  mat-icon {
+    height: 18px;
+    width: 18px;
+    font-size: 130%;
+    background: $bg-color-pink;
+    border-radius: 20px;
+    margin: 0 10px;
+    color: white;
+    cursor: pointer;
+  }
 }

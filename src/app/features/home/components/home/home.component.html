@@ -2,7 +2,7 @@
     <div class="slide-show">
         <carousel [images]="images" [objectFit]="carouselConfig.objectFit" [cellWidth]="carouselConfig.cellWidth"
             [arrowsOutside]="carouselConfig.arrowsOutside" [autoplay]="carouselConfig.autoplay"
-            [dots]="carouselConfig.dots" [loop]="carouselConfig.loop">
+            [dots]="carouselConfig.dots" [arrowsTheme]="carouselConfig.arrowsTheme" [loop]="carouselConfig.loop">
         </carousel>
     </div>
     <ng-container *ngFor="let cat of categories; let odd = odd">

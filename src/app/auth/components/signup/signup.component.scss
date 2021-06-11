@@ -1,30 +1,35 @@
 .signup-container {
-    padding: 50px;
+  padding: 50px;
+  display: flex;
+  flex-direction: row;
+  .heading-box {
+    padding: 30px;
+  }
+  .form-box {
+    width: 40%;
     display: flex;
-    flex-direction: row;
-    .heading-box {
-      padding: 30px;
-    }
+    flex-direction: column;
+    padding: 0 0 0 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .row {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .row {
+    width: 100%;
+  }
+  .signup-container {
+    flex-direction: column;
+    padding: 10px;
+
     .form-box {
-      width: 40%;
-      display: flex;
-      flex-direction: column;
-      padding: 0 0 0 20px;
+      width: 100%;
+      padding: 0 30px;
     }
   }
-
-  @media screen and (max-width: 768px) {
-      .row {
-          width: 100%;
-          padding: 0 10px;
-      }
-      .signup-container{
-          flex-direction: column;
-            padding: 10px;
-
-          .form-box {
-            width: 100%;
-            padding: 0 30px;
-          }
-      }
-  }
+}

@@ -12,9 +12,7 @@ export class SidebarComponent implements OnInit {
   panelOpenState = false;
   selectionCat: string | undefined;
 
-  constructor(
-    private store: Store<fromApp.AppState>
-  ) {}
+  constructor(private store: Store<fromApp.AppState>) {}
 
   ngOnInit(): void {
     this.store.select('products').subscribe((productState) => {
@@ -23,7 +21,7 @@ export class SidebarComponent implements OnInit {
       );
       this.selectionCat = cat?.name;
     });
-}
+  }
 
   onSelect(catName: string): void {
     this.selectionCat = catName;

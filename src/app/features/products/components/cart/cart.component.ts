@@ -7,6 +7,7 @@ import {
   ViewChild,
   OnDestroy,
   ElementRef,
+  HostListener,
 } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -15,7 +16,7 @@ import * as fromApp from '../../../../store/reducers/app.reducer';
 import * as cartActions from '../../store/actions/products.action';
 import { MessageService } from '../../../../core/services/message.service';
 import { User } from '../../../../auth/models/user.model';
-import { Subject } from 'rxjs';
+import { from, fromEvent, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-cart',
@@ -25,7 +26,7 @@ import { takeUntil } from 'rxjs/operators';
 export class CartComponent implements OnInit, OnDestroy {
   cartItem: Cart[] = [];
   isDesktop: boolean = false;
-  loggedInUser: User = {email:'', password:''};
+  loggedInUser: User = { email: '', password: '' };
   @ViewChild('loginPopup') loginPopup: TemplateRef<any>;
   matDialogRef: MatDialogRef<TemplateRef<any>>;
   private notifier = new Subject();
@@ -61,23 +62,23 @@ export class CartComponent implements OnInit, OnDestroy {
     return this.cartItem.reduce(reducer, initialValue);
   }
 
-  onClose(): void {
+  onClose() {
     this.injector.get(MatDialogRef).close();
   }
 
-  remove(index: number): void {
+  remove(productId: string) {
     this.store.dispatch(
-      cartActions.updateCartItem({ index, action: 'remove' })
+      cartActions.updateCartItem({ productId, action: 'remove' })
     );
   }
 
-  add(index: number): void {
+  add(productId: string) {
     this.store.dispatch(
-      cartActions.updateCartItem({ index, action: 'add' })
+      cartActions.updateCartItem({ productId, action: 'add' })
     );
   }
 
-  checkout(): void {
+  checkout() {
     if (!this.loggedInUser.email) {
       this.matDialogRef = this.dialog.open(this.loginPopup, {
         width: '300px',

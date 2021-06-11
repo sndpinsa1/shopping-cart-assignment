@@ -9,7 +9,7 @@ export interface State {
   errorMessage: string;
 }
 
-const initialState: State = {
+export const initialState: State = {
   banners: [],
   categories: [],
   errorMessage: '',

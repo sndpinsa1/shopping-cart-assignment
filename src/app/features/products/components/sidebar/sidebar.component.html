@@ -1,5 +1,6 @@
 <div class="sidebar desktop-view">
     <ul>
+        <li><a routerLink="/products" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">All Product</a></li>
         <li *ngFor="let cat of categories">
             <a *ngIf="cat.enabled" [routerLink]="cat.id" routerLinkActive="active">{{cat.name}}</a>
         </li>

@@ -22,9 +22,10 @@
                         {{cart.product.name}}
                     </div>
                     <div class="count">
-                        <mat-icon (click)="add(i)">add</mat-icon>
+                        <mat-icon (click)="remove(cart.product.id)">remove</mat-icon>
                         <div class="qty">{{cart.qty}}</div>
-                        <mat-icon (click)="remove(i)">remove</mat-icon>
+                        <mat-icon (click)="add(cart.product.id)">add</mat-icon>
+
                         <p>X</p>
                         <div class="price">Rs. {{cart.product.price}}</div>
                         <div class="total">Rs. {{cart.qty * cart.product.price}}</div>

@@ -9,7 +9,7 @@ export interface State {
   selectedCategoryId: string;
 }
 
-const initialState: State = {
+export const initialState: State = {
   items: getCartItemFromLocalStorage(),
   products: [],
   errorMsg: '',
@@ -26,7 +26,11 @@ const productPageReducer = createReducer(
       items: cartItems,
     };
   }),
-  on(ProductActions.updateCartItem, (state, { index, action }) => {
+  on(ProductActions.updateCartItem, (state, { productId, action }) => {
+    let index = state.items.findIndex((item) => item.product.id === productId);
+    if (index === -1) {
+      return { ...state };
+    }
     const item = state.items[index];
     const updatedItem = {
       ...item,
@@ -78,7 +82,7 @@ function setCartItemToLocalStorage(cartItems: Cart[]): void {
   localStorage.setItem('cart', JSON.stringify(cartItems));
 }
 
-function getCartItemFromLocalStorage(): Cart[] {
+export function getCartItemFromLocalStorage(): Cart[] {
   let cartItems: Cart[] = [];
 
   const cartString = localStorage.getItem('cart');

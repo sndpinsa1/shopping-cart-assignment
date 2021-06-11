@@ -6,13 +6,15 @@ import { mockProducts } from './products.mock';
 export const mockCart: Cart[] = [
   {
     product: {
-      category: 'Fruits',
-      imageURL: 'abc.jpg',
-      name: 'Apple',
-      sku: 'apple',
-      stock: 40,
-      price: 45,
-      description: 'American apple',
+      name: 'Johnson & Johnson Baby skincare wipes, 20 pcs',
+      imageURL: 'assets/static/images/products/baby/wipes.jpg',
+      description:
+        'Johnsons Baby wipes gently cleanse and care for babys delicate skin. As mild as pure water, they can be used safely all over the body, even around eyes.',
+      price: 70,
+      stock: 50,
+      category: '5b6899683d1a866534f516e0',
+      sku: 'baby-wipes-20',
+      id: '5b6c750701a7c38429530897',
     },
     qty: 2,
   },
@@ -48,6 +50,6 @@ export const appState: AppState = {
     items: mockCart,
     errorMsg: '',
     products: mockProducts,
-    selectedCategoryId: '5b6899123d1a866534f516de',
+    selectedCategoryId: '5b6899953d1a866534f516e2',
   },
 };
