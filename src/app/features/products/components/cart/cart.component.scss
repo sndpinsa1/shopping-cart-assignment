@@ -68,7 +68,7 @@
 
       flex-direction: row;
       img {
-        width: 25%;
+        width: 20%;
       }
       .info {
         width: 100%;
@@ -151,11 +151,11 @@
 @media screen and (max-width: 768px) {
   .shopping-cart {
     .cart-item {
-      height: 100%;
+      min-height: 100vh;
       max-height: 100%;
     }
     .no-item {
-      height: 100%;
+      min-height: 100vh;
       max-height: 100%;
     }
   }
