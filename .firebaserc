@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "shopping-cart-assignment-ed878"
+    "default": "shopping-cart-assignment-ed878",
+    "development": "dev-shopping-cart-assignment",
+    "prod": "shopping-cart-assignment-ed878"
   }
 }

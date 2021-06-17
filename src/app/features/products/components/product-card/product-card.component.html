@@ -1,0 +1,28 @@
+<div class="card-container">
+    <div class="title">
+        <h1>{{product.name | shorten: 40}}</h1>
+    </div>
+    <div class="image">
+        <img [src]="product.imageURL" [alt]="product.name">
+    </div>
+    <div class="description">
+        <p>
+            {{product.description | shorten : 90}}
+        </p>
+    </div>
+    <div class="action">
+        <div *ngIf="!cart" class="price">
+            MRP @ {{product.price}}
+        </div>
+        <button *ngIf="!cart" (click)="onAddToCart(product)" class="btn btn--pink add">
+            Buy Now <span class="price-in"> @ MRP {{product.price}}</span>
+        </button>   
+
+        <div *ngIf="cart" class="cart-op">
+            <span>MRP @ {{product.price}}</span>
+            <mat-icon (click)="onRemove(product.id)">remove</mat-icon>
+            <div class="qty">{{cart}}</div>
+            <mat-icon (click)="onAdd(product.id)">add</mat-icon>
+        </div>
+    </div>
+</div>

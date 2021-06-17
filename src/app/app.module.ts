@@ -16,9 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpErrorHandlerInterceptorService } from './core/intercepters/http-error-handler-interceptor.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,12 +25,20 @@ import { HttpErrorHandlerInterceptorService } from './core/intercepters/http-err
     SharedModule,
     CoreModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot(fromAppEffects.ALL_EFFECTS)
+    EffectsModule.forRoot(fromAppEffects.ALL_EFFECTS),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
-    {provide:HTTP_INTERCEPTORS, useClass:HttpErrorHandlerInterceptorService, multi:true}
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorHandlerInterceptorService,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

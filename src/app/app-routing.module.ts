@@ -4,30 +4,34 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path:'home',
-    loadChildren:() => import('./features/home/home.module').then(m => m.HomeModule)
+    path: 'home',
+    loadChildren: () =>
+      import('./features/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path:'products',
-    loadChildren:() => import('./features/products/products.module').then(m => m.ProductsModule)
+    path: 'products',
+    loadChildren: () =>
+      import('./features/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
   },
   {
-    path:'auth',
-    loadChildren:() => import('./auth/auth.module').then(m => m.AuthModule)
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path:'',
-    redirectTo:'/home',
-    pathMatch:'full'
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
   },
   {
-    path:"**",
-    component:PageNotFoundComponent
-  }
+    path: '**',
+    component: PageNotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

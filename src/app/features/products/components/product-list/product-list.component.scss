@@ -14,184 +14,20 @@
   margin-top: 10px;
 }
 
+// mobile first approch
 .main-box {
-  display: flex;
-  flex-wrap: wrap;
-  // padding-left: 20px;
-}
-
-.product-card {
-  flex-direction: column;
-  display: flex;
-  position: relative;
-  flex: 0 1 25%;
-  border-bottom: 2px dashed #eeeeee;
-  padding: 12px;
-  margin-bottom: 20px;
-  .small {
-    flex: 1 1 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    .description {
-      background-color: $bg-color-gray;
-      padding: 10px;
-      font-size: 80%;
-      margin: 5px 5px 10px 5px;
-      height: 105px;
-
-      p {
-        padding-bottom: 10px;
-        overflow: hidden;
-        height: 80px;
-      }
-    }
-  }
-  img {
-    flex: 1 1 0;
-    width: 100%;
-    height: fit-content;
-    max-height: 163px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-column-gap: 4%;
+  margin: 20px 2% 0 2%;
+  // tablets minimum width should be 450px
+  @media screen and (min-width: 450px) {
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 15px;
   }
 
-  &--title {
-    margin-bottom: 10px;
-    flex-grow: 1;
-  }
-
-  .action {
-    display: flex;
-    max-height: 26px;
-    justify-content: space-between;
-  }
-
-  .m-action {
-    display: none;
-  }
-
-  &--price {
-    font-size: 90%;
-    font-weight: bold;
-    flex-grow: 1;
-    text-align: center;
-    align-self: center;
-  }
-}
-
-.mobile-list {
-  display: flex;
-  flex-direction: column;
-  display: none;
-  border-bottom: 2px dashed #eeeeee;
-  padding: 12px;
-  margin-bottom: 20px;
-  .mob-container {
-    display: flex;
-    flex-direction: row;
-    img {
-      width: 50%;
-    }
-    .desc {
-      display: flex;
-      flex-direction: column;
-      justify-content: stretch;
-      .description {
-        flex-grow: 1;
-        background-color: $bg-color-gray;
-        padding: 5px;
-        font-size: 70%;
-        margin: 5px 5px 10px 5px;
-      }
-      div {
-        display: flex;
-      }
-    }
-  }
-}
-
-// media query
-
-@media screen and (max-width: 768px) {
-  // product page media query
-  .product-card {
-    flex: 0 1 50%;
-
-    &--title {
-      margin-bottom: 10px;
-      flex-grow: 1;
-    }
-    .small {
-      flex-direction: row;
-      flex: 0 1 50%;
-      margin-bottom: 10px;
-      .description {
-        height: 120px;
-        p {
-          height: 100px;
-        }
-      }
-    }
-
-    img {
-      width: 50%;
-      // height: fit-content;
-    }
-
-    .tab {
-      display: block;
-    }
-
-    .action {
-      display: none;
-    }
-
-    &--price {
-      flex: 1 1 50%;
-    }
-    .m-action {
-      display: flex;
-      max-height: 26px;
-      button {
-        width: 100%;
-      }
-    }
-  }
-}
-
-/* Samll phones to small tablets: from 0 to 480px*/
-@media screen and (max-width: 480px) {
-  // product page media query
-  .product-card {
-    display: none;
-  }
-  .mobile-list {
-    display: block;
-  }
-}
-
-.vertical {
-  border-left: 3px solid #eee;
-  height: 80%;
-  top: 60px;
-  position: absolute;
-  right: 0;
-}
-
-.count {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  flex: 1 1 50%;
-  justify-content: space-between;
-  height: 26px;
-  mat-icon {
-    height: 18px;
-    width: 18px;
-    font-size: 130%;
-    background: $bg-color-pink;
-    border-radius: 20px;
-    margin: 0 10px;
-    color: white;
-    cursor: pointer;
+  // for desktops minimum width should be 767px
+  @media screen and (min-width: 769px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

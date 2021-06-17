@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatModule } from './mat.module';
 import { RouterModule } from '@angular/router';
+import { ShortenPipe } from './pipes/shorten.pipe';
 
 const ALL_MODULES = [
   CommonModule,
@@ -12,15 +13,13 @@ const ALL_MODULES = [
   IvyCarouselModule,
   MatModule,
   RouterModule,
-]
+];
+
+const ALL_SHARED_PIPE = [ShortenPipe];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    ...ALL_MODULES
-  ],
-  exports: [
-    ...ALL_MODULES
-  ],
+  declarations: [...ALL_SHARED_PIPE],
+  imports: [...ALL_MODULES],
+  exports: [...ALL_MODULES, ...ALL_SHARED_PIPE],
 })
 export class SharedModule {}

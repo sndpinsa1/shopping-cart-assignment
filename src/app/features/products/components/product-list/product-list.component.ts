@@ -8,7 +8,7 @@ import * as fromApp from '../../../../store/reducers/app.reducer';
 import * as ProductActions from '../../store/actions/products.action';
 import * as cartActions from '../../store/actions/products.action';
 import { MessageService } from '../../../../core/services/message.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { AppGlbMessages } from '../../../../shared/constants/app-glb-messages';
 @Component({
   selector: 'app-product-list',
@@ -16,7 +16,7 @@ import { AppGlbMessages } from '../../../../shared/constants/app-glb-messages';
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
-  products: Product[] = [];
+  products$: Observable<Product[]>;
   cartItems: Cart[] = [];
   private notifier = new Subject();
   cartMap: Map<string, number> = new Map();
@@ -32,10 +32,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
       this.store.dispatch(ProductActions.loadProducts({ id: params['catid'] }));
     });
 
-    this.store
+    this.products$ = this.store
       .select('products')
-      .pipe(takeUntil(this.notifier))
-      .subscribe((productState) => (this.products = productState.products));
+      .pipe(map((productState) => productState.products));
 
     this.store
       .select('products')

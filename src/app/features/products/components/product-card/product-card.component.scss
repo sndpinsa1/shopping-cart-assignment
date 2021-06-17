@@ -1,0 +1,159 @@
+@import "~/src/styles/variables";
+
+// mobile first approach
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2%;
+  grid-row-gap: 10px;
+  border-bottom: 2px dashed #eee;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+
+  // For tablets minimum width should be 450px
+  @media screen and (min-width: 450px) {
+    &::after {
+      display: none;
+    }
+  }
+  // For desktops minimum width should be 769px
+  @media screen and (min-width: 769px) {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    grid-column: 1 / 3;
+    height: auto;
+    // For tablets minimum width should be 450px
+    @media screen and (min-width: 450px) {
+      height: 50px;
+    }
+
+    // For desktops minimum width should be 769px
+    @media screen and (min-width: 769px) {
+      grid-row: auto;
+      grid-column: auto;
+      height: 90px;
+    }
+
+    h1 {
+      font-size: 120%;
+      line-height: 1.4;
+      font-weight: 500;
+    }
+  }
+
+  .image {
+    grid-column: auto;
+    grid-row: 2 / 4;
+    align-self: center;
+
+    // For tablets minimum width should be 450px
+    @media screen and (min-width: 450px) {
+    }
+    // For desktops minimum width should be 769px
+    @media screen and (min-width: 769px) {
+      grid-row: auto;
+      grid-column: auto;
+    }
+
+    img {
+      width: 100%;
+      max-width: 150px;
+    }
+  }
+
+  .description {
+    grid-column: auto;
+    grid-row: auto;
+    padding: 10px;
+    background: #eee;
+
+    // For tablets minimum width should be 450px
+    @media screen and (min-width: 450px) {
+      max-height: 156px;
+    }
+    // For desktops minimum width should be 769px
+    @media screen and (min-width: 769px) {
+      grid-row: auto;
+      grid-column: auto;
+      height: 125px;
+    }
+  }
+
+  .action {
+    grid-column: auto;
+    grid-row: 3/4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 26px;
+    // For tablets minimum width should be 450px
+    @media screen and (min-width: 450px) {
+      grid-column: 1/3;
+      grid-row: auto;
+    }
+    // For desktops minimum width should be 769px
+    @media screen and (min-width: 769px) {
+      grid-row: auto;
+      grid-column: auto;
+    }
+
+    .price {
+      flex-grow: 1 1 50%;
+      font-weight: 400;
+      text-align: center;
+      display: none;
+      // For desktops minimum width should be 769px
+      @media screen and (min-width: 769px) {
+        display: block;
+      }
+    }
+    .add {
+      flex: 1 1 50%;
+      @media screen and (min-width: 769px) {
+        flex: 0 1 auto;
+      }
+    }
+    .price-in {
+      display: inline;
+      // For desktops minimum width should be 769px
+      @media screen and (min-width: 769px) {
+        display: none;
+      }
+    }
+
+    .cart-op {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      margin-top: 10px;
+      justify-content: space-between;
+      span {
+        flex-grow: 1;
+        text-align: center;
+      }
+      mat-icon {
+        height: 18px;
+        width: 18px;
+        font-size: 145%;
+        margin: 0 10px;
+        background: $bg-color-pink;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    border: 2px solid #eee;
+    position: absolute;
+    right: -15px;
+    height: 80%;
+    top: 10%;
+  }
+}
