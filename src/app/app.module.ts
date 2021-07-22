@@ -18,7 +18,7 @@ import { HttpErrorHandlerInterceptorService } from './core/intercepters/http-err
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,

@@ -7,7 +7,11 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:report": "ng test --code-coverage"
+    "test:report": "ng test --code-coverage",
+    "dev:ssr": "ng run shopping-cart-assignment:serve-ssr",
+    "serve:ssr": "node dist/shopping-cart-assignment/server/main.js",
+    "build:ssr": "ng build && ng run shopping-cart-assignment:server",
+    "prerender": "ng run shopping-cart-assignment:prerender"
   },
   "private": true,
   "dependencies": {
@@ -20,10 +24,13 @@
     "@angular/material": "^12.0.2",
     "@angular/platform-browser": "~12.0.2",
     "@angular/platform-browser-dynamic": "~12.0.2",
+    "@angular/platform-server": "~12.0.2",
     "@angular/router": "~12.0.2",
     "@ngrx/effects": "^12.0.0",
     "@ngrx/store": "^12.0.0",
+    "@nguniversal/express-engine": "^12.0.2",
     "angular-responsive-carousel": "^2.0.2",
+    "express": "^4.15.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
@@ -32,6 +39,8 @@
     "@angular-devkit/build-angular": "~12.0.2",
     "@angular/cli": "~12.0.2",
     "@angular/compiler-cli": "~12.0.2",
+    "@nguniversal/builders": "^12.0.2",
+    "@types/express": "^4.17.0",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.7.0",
