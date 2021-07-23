@@ -1,37 +1,46 @@
 <header>
-    <nav class="row">
-        <div class="navbar">
-            <div class="logo-container">
-                <a routerLink="/">
-                    <img src="/assets/static/images/logo_2x.png" alt="Logo" class="logo-img">
-                </a>
-            </div>
-            <div class="nav-container">
-                <div class="signup" *ngIf="!loggedInUser.email">
-                    <a routerLink="auth/login" class="btn btn-primary">Signin</a>
-                    <a routerLink="auth/signup" class="btn btn-primary">Register</a>
-                </div>
-
-                <div class="signup" *ngIf="loggedInUser.email">
-                    <button class="btn btn-primary">Welcome! {{loggedInUser?.firstName}}</button>
-                    <button (click)="logout()" class="btn btn--pink">Logout</button>
-                </div>
-
-                <div class="main-nav">
-                    <ul>
-                        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-                        <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
-                    </ul>
-                    <a href="Javascript:void(0)" (click)="onCartClick()" class="cart">
-                        <span class="icon-cart-pink">
-                            <svg>
-                                <use xlink:href="/assets/static/images/cart.svg#Layer_1"></use>
-                            </svg>
-                        </span>
-                        <p>{{items.length}} items</p>
-                    </a>
-                </div>
-            </div>
+  <nav class="row">
+    <div class="navbar">
+      <div class="logo-container">
+        <!-- import alt text -->
+        <a routerLink="/">
+          <img
+            src="/assets/static/images/logo_2x.png"
+            alt="Logo"
+            class="logo-img"
+          />
+        </a>
+      </div>
+      <div class="nav-container">
+        <div class="signup" *ngIf="!loggedInUser.email">
+          <a routerLink="auth/login" class="btn btn-primary">Signin</a>
+          <a routerLink="auth/signup" class="btn btn-primary">Register</a>
         </div>
-    </nav>
+
+        <div class="signup" *ngIf="loggedInUser.email">
+          <button class="btn btn-primary">
+            Welcome! {{ loggedInUser?.firstName }}
+          </button>
+          <button (click)="logout()" class="btn btn--pink">Logout</button>
+        </div>
+
+        <div class="main-nav">
+          <ul>
+            <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+            <li>
+              <a routerLink="/products" routerLinkActive="active">Products</a>
+            </li>
+          </ul>
+          <a href="Javascript:void(0)" (click)="onCartClick()" class="cart">
+            <span class="icon-cart-pink">
+              <svg>
+                <use xlink:href="/assets/static/images/cart.svg#Layer_1"></use>
+              </svg>
+            </span>
+            <p>{{ items.length }} items</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
 </header>
